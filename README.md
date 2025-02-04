@@ -1,7 +1,7 @@
 # BCG_prime_aging project
 In this project, we reported the relationship between circulating inflammatory proteome and epigenetic age acceleration as assessed by DNA methylation across four independent cohorts representing different age groups and health conditions. Furthermore, we explored the associations between aging and immune dysregulation, frailty, and the presence of multimorbidity. 
 
-In this repository, we upload the processed data and code for generating the main figures, the summary of the figures is as follows: 
+In this repository, we upload the processed data and code for generating the main figures. The summary of the figures is as follows: 
 
 In Figure 1, we showed the associations between biological age(DNAmAge) and chronological age.
 
