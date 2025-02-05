@@ -11,7 +11,7 @@ In Figure 3, we presented the relationships between inflammatory proteins and ag
 
 In Figure 4, we demonstrated the proteins related to multimorbidity.
 
-In Figure 5, we showed how age-related phenotypes are associated with immune responsiveness. 
+In Figure 5, we showed how age-related phenotypes were associated with immune responsiveness. 
 
 Contact: 
 Zhaoli Liu (zhaoli666li@gmail.com)
