@@ -16,4 +16,4 @@ In Figure 5, we showed how age-related phenotypes were associated with immune re
 Contact: 
 Zhaoli Liu (zhaoli666li@gmail.com)
 
-Raw data accession: EGA (to add)
+Raw data accession: EGA (EGAS00001008031(BCG-PRIME), EGAS00001008030(iMED), 300BCG (EGAS00001007498), and EGAS00001008029 (500FG)）
