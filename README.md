@@ -7,11 +7,13 @@ In Figure 1, we showed the associations between biological age(DNAmAge) and chro
 
 In Figure 2, we mainly showed the relationships between age-related phenotypes and clinical phenotypes (multimorbidity and frailty index).
 
-In Figure 3, we presented the relationships between inflammatory proteins and age-related phenotypes, as well as the causal results performed with two sample MR. 
+In Figure 3, we presented the relationships between inflammatory proteins and age-related phenotypes. 
 
-In Figure 4, we demonstrated the proteins related to multimorbidity.
+In Figure 4, we presented the causal results performed with two sample MR and demonstrated the proteins related to multimorbidity.
 
-In Figure 5, we showed how age-related phenotypes were associated with immune responsiveness. 
+In figure 5, we presented the sex stratified analysis between age related phenotypes and proteins.
+
+In Figure 6, we showed how age-related phenotypes were associated with immune responsiveness. 
 
 Contact: 
 Zhaoli Liu (zhaoli666li@gmail.com)
