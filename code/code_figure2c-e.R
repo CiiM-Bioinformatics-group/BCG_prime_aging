@@ -13,7 +13,7 @@ sum(pheno_filter$Record_Id == EAA$SID) # 384
 
 # diabetes mellitus, Chronic Obstructive Pulmonary Disease,Chronic kidney disease (CKD), Malignancy, dementia
 comorbidy = c("comorb_hypertension", "comorb_cvd", "comorb_stroke", "comorb_dm", "comorb_copd", "comorb_asthma", 
-              "comorb_pulm_real", "comorb_ckd", "comorb_malign", "comorb_demen")
+               "comorb_ckd", "comorb_malign", "comorb_demen")
 
 pheno = pheno_filter[, c("Record_Id", comorbidy)]
 pheno$yes_count <- rowSums(pheno[, 2:ncol(pheno)] == "Yes")
@@ -33,17 +33,13 @@ Category = c(
   "Age"
 )
 
-shapiro.test(pheno$yes_count)
-
 result <- data.frame()
 
 for (j in Category) {
   
-  data = data.frame(comorbidy = pheno$yes_count, sex = pheno_filter$sex, EAA = EAA[[j]]) %>% na.omit()
+  data = data.frame(comorbidy = pheno$yes_count, sex = pheno_filter$sex, EAA = EAA[[j]], smoking = pheno_filter$base_smoking_household) %>% na.omit()
   data$sex = as.factor(data$sex)
-  #data$comorbidy <- qnorm((rank(data$comorbidy, na.last="keep") - 0.5) / sum(!is.na(data$comorbidy)))  
-  
-  mod <- lm(formula = comorbidy ~ EAA + sex, data = data)
+  mod <- lm(formula = comorbidy ~ EAA + sex + smoking, data = data)
   cf <- summary(mod)$coefficients
   res <- cf[2, c("Estimate", "Pr(>|t|)")]
   result <- rbind(result, res)
@@ -79,6 +75,7 @@ all_result <- all_result %>%
 category_order <- c("Age", "Horvath", "Hannum", "GrimAge", "PhenoAge", "EAA_Horvath", "EAA_Hannum", "EAA_Grim", "EAA_Pheno")
 all_result$Category <- factor(all_result$Category, levels = category_order)
 
+# figure 2c
 p1 = ggplot(all_result, aes(x = estimate, y = Category, color = sig)) +
   geom_bar(stat = "identity", fill = "transparent") +
   #facet_wrap(~ Category, scales = "free_y", nrow = 1) +  # Facet by Category
@@ -93,7 +90,6 @@ p1 = ggplot(all_result, aes(x = estimate, y = Category, color = sig)) +
 
 
 ### heatmap ###
-rm(list = ls())
 library(readxl)
 library(dplyr)
 library(ggplot2)
@@ -119,11 +115,10 @@ Category = c(
 )
 
 comorbidy = c("comorb_hypertension", "comorb_cvd", "comorb_stroke", "comorb_dm", "comorb_copd", "comorb_asthma", 
-              "comorb_pulm_real", "comorb_ckd", "comorb_malign")
+               "comorb_ckd", "comorb_malign")
 
 all_results <- list()
 
-# with smoking_household and bmi as covariable
 for (j in Category){
   
   result = data.frame()
@@ -167,7 +162,6 @@ final_result <- final_result %>%
                               "comorb_dm" = "diabetes mellitus",
                               "comorb_copd" = "copd",
                               "comorb_asthma" = "asthma",
-                              "comorb_pulm_real" = "pulm_real",
                               "comorb_ckd" = "ckd",
                               "comorb_malign" = "malign"))
 
@@ -176,6 +170,7 @@ final_result$Category <- factor(final_result$Category, levels = category_order)
 
 final_result$value = -log10(final_result$pvalue) * final_result$coefficient
 
+# figure 2d
 p2 = ggplot(final_result, aes(x = Comorbidity, y = Category, fill = value)) +
   geom_tile() +
   scale_fill_gradient2(low = muted("blue"), mid = "white",
@@ -242,7 +237,6 @@ final_result <- final_result %>%
                               "comorb_dm" = "diabetes mellitus",
                               "comorb_copd" = "copd",
                               "comorb_asthma" = "asthma",
-                              "comorb_pulm_real" = "pulm_real",
                               "comorb_ckd" = "ckd",
                               "comorb_malign" = "malign"))
 
