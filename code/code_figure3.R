@@ -6,10 +6,7 @@ library(ggplot2)
 library(ggpubr)
 library(scales)
 
-load("input/BCGprime_final_result_all_age_eaa.rdata")
-
-bcg_prime_all_result = final_result
-rm(final_result)
+bcg_prime_all_result = read_excel("input/BCG-PRIME_final_result_all_age_eaa.xlsx")
 
 bcg_prime_all_result$protein <- gsub("\\.", "_", bcg_prime_all_result$protein)
 bcg_prime_all_result$protein <- gsub("X4E_BP1", "4E_BP1", bcg_prime_all_result$protein)
